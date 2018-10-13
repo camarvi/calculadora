@@ -39,18 +39,75 @@ def numeroPulsado(num):
 def suma(num):
 
     global operacion
-
     global resultado
-
     global decimal
 
+
     resultado += float(num)
+    numeroPantalla.set(resultado)
+
 
     operacion = "suma"
-
     decimal = 0
 
+    print (resultado)
+    print (operacion)
+
+
+
+#---------------Funcion Resta---------------------
+
+def resta(num):
+
+    global operacion
+    global resultado
+    global decimal
+
+    print ("dentro resta")
+    print (operacion)
+
+
+    if resultado>0:
+
+        calcular("suma", num)
+
+    else:
+        resultado = resultado - float(num)
+        numeroPantalla.set(resultado)
+
+    operacion = "resta"
+    decimal = 0
+    print (resultado)
+    print (operacion)
+
+
+#-------------Funcion Calcular--------------------
+
+def calcular(operation,num):
+
+    global resultado
+    global decimal
+
+
+    print ("dentro operacion")
+    print (operation)
+    print (num)
+    print (resultado)
+    print (operation)
+    if operation == "suma":
+        print ("restando")
+        resultado += float(num)
+    elif operation == "resta":
+        print("sumando")
+        resultado -= float(num)
+    elif operation == "multiplicar":
+        resultado = resultado * float(num)
+    else:
+        resultado = resultado / float(num)
+
+    decimal = 0
     numeroPantalla.set(resultado)
+
 
 #----------Funcion el_resultado---------------------
 
@@ -137,7 +194,7 @@ boton2.grid(row=4, column=2)
 boton3 = Button(miFrame, text="3", width=3, command=lambda:numeroPulsado("3"))
 boton3.grid(row=4, column=3)
 
-botonRest = Button(miFrame, text="-", width=3)
+botonRest = Button(miFrame, text="-", width=3, command=lambda:resta(numeroPantalla.get()))
 botonRest.grid(row=4, column=4)
 
 #--------------Fila 4-----------------------
